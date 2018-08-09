@@ -33,10 +33,7 @@ class DiceGame(Game):
         while True:
             print(len(self.member),self.member[i].Name(),stander)
             inpu=input("input your choice:").split(",")
-            if stander[0]>=6 and stander[1]>=6:
-                WinOrLose()
-                print("look")
-                break
+            
             if inpu[0]==self.member[i].Name():
                 if (int(inpu[1])<stander[0]) or (int(inpu[2])<stander[1]) or (int(inpu[1])==stander[0] and int(inpu[2])==stander[1]) :
                     print("error now is ",stander)
@@ -51,9 +48,16 @@ class DiceGame(Game):
                         i=i+1
             
             elif inpu[0]=="抓":
-                WinOrLose()
+                self.WinOrLose(i)
+            else :
+                print("error input please try again")
+            if stander[0]>=6 and stander[1]>=6:
+                inpu=input("input:").split(",")
+                self.WinOrLose(i)
+                print("look")
+                break
             print(len(self.member),self.member[i].Name())
-    def WinOrLose(self):
+    def WinOrLose(self,i):
         print("in winorlose")
 Dice=DiceGame()
 i=0
