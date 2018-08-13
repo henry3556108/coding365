@@ -32,6 +32,7 @@ Class DiceGame(Game)
 StartData(): Void 
     //將隨機六個數字插入player 裡的data 並sort
 StartGame():Void 
+    
 	//內有stander儲存裡玩家喊的骰子資料
     // 輸入資料(格式(上面有寫))並傳到ReviewInpu裡檢查是否錯誤 抓了就	呼叫WinOrLose(inpu,stander,member)檢查是否獲勝
 ReviewInpu():Boolean or None
