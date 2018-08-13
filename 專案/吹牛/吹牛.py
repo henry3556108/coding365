@@ -27,6 +27,7 @@ class DiceGame(Game):
             data_temp=[]
             for _ in range(6):
                 data_temp.append(random.randint(1,6))
+            data_temp.sort()
             x.data=tuple(data_temp)
     def StartGame(self):
         stander=[]
