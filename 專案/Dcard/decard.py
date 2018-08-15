@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 
 
 dcarddic={"熱門":"","新生季":"/freshman"
+,"美妝":"/mackup","感情":"/relationship"
 ,"心情":"/mood","女孩":"/girl","有趣":"/funny"
 ,"攝影":"/photography","3C":"/3c","西施":"/sex"
 ,"廢文":"/whysoserious","課程":"/course"
