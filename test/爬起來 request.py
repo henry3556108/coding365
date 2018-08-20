@@ -1,9 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-
-
-
-
 url=[]
 def TooLong(x):
     count=0
