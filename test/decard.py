@@ -1,8 +1,11 @@
 import requests
 from bs4 import BeautifulSoup
+import time
+from telepot.loop import MessageLoop
+from pprint import *
+import random
 
-
-
+bot = telepot.Bot('664350005:AAEGmjiy3KutiBEqPsfvf-JQsFSquDxa_To')
 dcarddic={"熱門":"","新生季":"/freshman"
 ,"美妝":"/mackup","感情":"/relationship"
 ,"心情":"/mood","女孩":"/girl","有趣":"/funny"
@@ -20,9 +23,8 @@ def TooLong(x):
         else:
             print(y,end="")
             count=count+1
-    print("你的選擇有 : ")  
-for x in dcarddic:
-    print(x,end=",")
+print("你的選擇有 : ")  
+
 
 dcardurl="http://www.dcard.tw/f"
 wheresearch=dcarddic[input("\n你想爬哪一個版的資料呢? :")]
@@ -60,3 +62,27 @@ for x in url:
         TooLong(y)
         print()
     print(x,"\n",cline)
+def handle(msg):
+    pprint(msg)
+    try:  
+        global chat_id
+        chat_id= msg['chat']['id']
+        flag =  msg['text'].split('@')[1]
+        First_command = msg['text'].split('@')[0]
+        message_id = msg['message_id']
+        username = '@' + msg['from']['username']
+    except BaseException:
+        pass
+    if flag == 'Mao_secretary_bot' and First_command=='/start':
+        bot.sendMessage(chat_id, "輸入你想搜尋的板\n你的選擇有 : \n熱門,新生季,美妝,感情,心情,女孩,有趣,攝影,3C,西斯,廢文,課程,工作,理財,男孩,運動,實習職缺")
+    elif flag == 'Mao_secretary_bot' and First_command in dcarddic:
+    else:
+        pass
+    
+   
+    
+MessageLoop(bot, handle).run_as_thread()
+print("I'm listening...")
+
+while True:
+    time.sleep(5)
