@@ -38,29 +38,20 @@ class Dice:
     def Scanner(self,commend,user):
         print(len(commend),commend[0],user,self.now)
         if len(commend)==1 and commend[0]=="抓" and user==self.now:
-            print("抓")
             return True
         if len(commend)==2 and commend[0].isdigit()==True and commend[1].isdigit()==True and user==self.now:
-            print("喊")
             if len(self.dice)==0 and int(commend[0])>0 and int(commend[1])>0:
-                print("1")
                 return True
             elif int(self.dice[0])<int(commend[0]) and int(self.dice[1])<=int(commend[1]) :
-                print("2")
                 return True
             elif int(self.dice[0])<=int(commend[0]) and int(self.dice[1])<int(commend[1]):
-                print("2")
                 return True
             else:
-                print("f1")
                 return False
         else:
             return False
-            print("f2")
     def Playing(self,commend,user):
         self.dice=[commend[0],commend[1]]
-        #print(self.playerdic)
-        #print(self.dice)
         self.time=self.time+1
         if self.time==len(self.player):
             self.time=0
@@ -79,7 +70,6 @@ class Dice:
 
 
 def PlayingState(game,command,user):
-    print("3")
     if len(command)==2:
         print(game.time)
         game.now=game.player[game.time]
@@ -88,7 +78,6 @@ def PlayingState(game,command,user):
         if game.time==len(game.player):
             game.time=0
     if command[0]=='抓':
-        print("5")
         game.WhoWin(command,user)
     global state,chat_id
     if state!="over":
@@ -124,13 +113,11 @@ def handle(msg):
     except BaseException:
         pass
     if flag == 'Mao_secretary_bot':
-        print("in command")
         Command(username,First_command)
     else:
         pass
     First_command=First_command.split(",")
-    if state=='start' and game.Scanner(First_command,username)==True and flag == 'Mao_secretary_bot': 
-        print("playing")
+    if state=='start' and game.Scanner(First_command,username)==True and flag == 'Mao_secretary_bot':
         PlayingState(game,First_command,username)
         Command(username,First_command)
     
